@@ -21,6 +21,7 @@ public class Tweet : Printable
     public let created: NSDate
     public let id: String?
     public let media = [MediaItem]()
+    public let mediaMentions = [IndexedKeyword]()
     public let hashtags = [IndexedKeyword]()
     public let urls = [IndexedKeyword]()
     public let userMentions = [IndexedKeyword]()
@@ -80,6 +81,7 @@ public class Tweet : Printable
                                 media.append(mediaItem)
                             }
                         }
+                        mediaMentions = getIndexedKeywords(mediaEntities, inText: text, prefix: "h")
                     }
                     let hashtagMentionsArray = data?.valueForKeyPath(TwitterKey.Entities.Hashtags) as? NSArray
                     hashtags = getIndexedKeywords(hashtagMentionsArray, inText: text, prefix: "#")
