@@ -68,6 +68,7 @@ class MentionsTableViewController: UITableViewController {
     private struct Storyboard {
         static let KeywordCellReuseIdentifier = "Keyword Cell"
         static let ImageCellReuseIdentifier = "Image Cell"
+        static let KeywordSegueIdentifier = "From Keyword"
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -111,5 +112,20 @@ class MentionsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return mentions[section].title
     }
+    
+    // MARK: - Navitation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let identifier = segue.identifier {
+            if identifier == Storyboard.KeywordSegueIdentifier {
+                if let ttvc = segue.destinationViewController as? TweetTableViewController {
+                    if let cell = sender as? UITableViewCell {
+                        ttvc.searchText = cell.textLabel?.text
+                    }
+                }
+            }
+        }
+    }
+
 
 }

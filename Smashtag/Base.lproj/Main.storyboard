@@ -125,6 +125,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="ESb-8y-so3" kind="show" identifier="From Keyword" id="X3g-LW-41Z"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Image Cell" rowHeight="280" id="KuL-PP-L7O" customClass="MentionsTableViewCell" customModule="Smashtag" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -189,4 +192,7 @@
             <point key="canvasLocation" x="626" y="463"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="X3g-LW-41Z"/>
+    </inferredMetricsTieBreakers>
 </document>
