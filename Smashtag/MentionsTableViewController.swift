@@ -61,7 +61,6 @@ class MentionsTableViewController: UITableViewController {
         static let KeywordCellReuseIdentifier = "Keyword Cell"
         static let ImageCellReuseIdentifier = "Image Cell"
     }
-
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return mentions.count
@@ -99,6 +98,10 @@ class MentionsTableViewController: UITableViewController {
         default:
             return UITableViewAutomaticDimension
         }
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return mentions[section].title
     }
 
 }
