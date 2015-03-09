@@ -115,6 +115,20 @@ class MentionsTableViewController: UITableViewController {
     
     // MARK: - Navitation
     
+    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+        if identifier == Storyboard.KeywordSegueIdentifier {
+            if let cell = sender as? UITableViewCell {
+                if let url = cell.textLabel?.text {
+                    if url.hasPrefix("http") {
+                        UIApplication.sharedApplication().openURL(NSURL(string: url)!)                        
+                        return false
+                    }
+                }
+            }
+        }
+        return true
+    }
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
             if identifier == Storyboard.KeywordSegueIdentifier {
