@@ -14,20 +14,28 @@ class MentionsTableViewController: UITableViewController {
         didSet {
             title = tweet?.user.screenName
             if let media = tweet?.media {
-                mentions.append(Mentions(title: "Images",
-                    data: media.map { MentionItem.Image($0.url, $0.aspectRatio) }))
+                if media.count > 0 {
+                    mentions.append(Mentions(title: "Images",
+                        data: media.map { MentionItem.Image($0.url, $0.aspectRatio) }))
+                }
             }
             if let urls = tweet?.urls {
-                mentions.append(Mentions(title: "URLs",
-                    data: urls.map { MentionItem.Keyword($0.keyword) }))
+                if urls.count > 0 {
+                    mentions.append(Mentions(title: "URLs",
+                        data: urls.map { MentionItem.Keyword($0.keyword) }))
+                }
             }
             if let hashtags = tweet?.hashtags {
-                mentions.append(Mentions(title: "Hashtags",
-                    data: hashtags.map { MentionItem.Keyword($0.keyword) }))
+                if hashtags.count > 0 {
+                    mentions.append(Mentions(title: "Hashtags",
+                        data: hashtags.map { MentionItem.Keyword($0.keyword) }))
+                }
             }
             if let users = tweet?.userMentions {
-                mentions.append(Mentions(title: "Users",
-                    data: users.map { MentionItem.Keyword($0.keyword) }))
+                if users.count > 0 {
+                    mentions.append(Mentions(title: "Users",
+                        data: users.map { MentionItem.Keyword($0.keyword) }))
+                }
             }
         }
     }
