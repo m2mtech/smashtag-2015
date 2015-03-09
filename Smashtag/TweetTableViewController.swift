@@ -52,12 +52,6 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
             tableView.rowHeight = UITableViewAutomaticDimension
         }
         refresh()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     func refresh() {
@@ -75,7 +69,9 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
                         if newTweets.count > 0 {
                             self.tweets.insert(newTweets, atIndex: 0)
                             self.tableView.reloadData()
+                            self.tableView.reloadSections(NSIndexSet(indexesInRange: NSMakeRange(0, self.tableView.numberOfSections())), withRowAnimation: .None)
                             sender?.endRefreshing()
+                            self.title = self.searchText
                         }
                     })
                 }
@@ -107,6 +103,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
 
     private struct Storyboard {
         static let CellReuseIdentifier = "Tweet"
+        static let MentionsIdentifier = "Show Mentions"
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -116,50 +113,30 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
 
         return cell
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
+    
+    // MARK: - Navitation
+    
+    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+        if identifier == Storyboard.MentionsIdentifier {
+            if let tweetCell = sender as? TweetTableViewCell {
+                if tweetCell.tweet!.hashtags.count + tweetCell.tweet!.urls.count + tweetCell.tweet!.userMentions.count + tweetCell.tweet!.media.count == 0 {
+                    return false
+                }
+            }
+        }
         return true
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if let identifier = segue.identifier {
+            if identifier == Storyboard.MentionsIdentifier {
+                if let mtvc = segue.destinationViewController as? MentionsTableViewController {
+                    if let tweetCell = sender as? TweetTableViewCell {
+                        mtvc.tweet = tweetCell.tweet
+                    }
+                }
+            }
+        }
     }
-    */
-
+    
 }

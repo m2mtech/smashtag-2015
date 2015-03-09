@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Tweet Table View Controller-->
+        <!--Smashtag-->
         <scene sceneID="ibv-Jo-n0J">
             <objects>
                 <tableViewController id="ESb-8y-so3" customClass="TweetTableViewController" customModule="Smashtag" customModuleProvider="target" sceneMemberID="viewController">
@@ -21,13 +21,13 @@
                             <textInputTraits key="textInputTraits" keyboardType="twitter"/>
                         </textField>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Tweet" rowHeight="160" id="2md-cY-6Ag" customClass="TweetTableViewCell" customModule="Smashtag" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Tweet" rowHeight="160" id="2md-cY-6Ag" customClass="TweetTableViewCell" customModule="Smashtag" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2md-cY-6Ag" id="11N-fk-c7Q">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4hr-gA-Km6">
-                                            <rect key="frame" x="64" y="8" width="528" height="20"/>
+                                            <rect key="frame" x="64" y="8" width="495" height="20"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -40,7 +40,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="qCf-kg-5Zk">
-                                            <rect key="frame" x="64" y="36" width="528" height="115"/>
+                                            <rect key="frame" x="64" y="36" width="495" height="115"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -55,7 +55,7 @@
                                     <constraints>
                                         <constraint firstItem="Lhe-Uq-ggg" firstAttribute="top" secondItem="aF7-ZN-7f0" secondAttribute="bottom" constant="8" id="10K-tR-qLh"/>
                                         <constraint firstItem="aF7-ZN-7f0" firstAttribute="top" secondItem="11N-fk-c7Q" secondAttribute="topMargin" id="Cdn-1P-7lQ"/>
-                                        <constraint firstItem="4hr-gA-Km6" firstAttribute="trailing" secondItem="11N-fk-c7Q" secondAttribute="trailingMargin" id="J4S-xp-vwR"/>
+                                        <constraint firstItem="4hr-gA-Km6" firstAttribute="trailing" secondItem="11N-fk-c7Q" secondAttribute="trailingMargin" priority="900" id="J4S-xp-vwR"/>
                                         <constraint firstItem="qCf-kg-5Zk" firstAttribute="leading" secondItem="4hr-gA-Km6" secondAttribute="leading" id="Jvj-i8-sxB"/>
                                         <constraint firstItem="Lhe-Uq-ggg" firstAttribute="trailing" secondItem="aF7-ZN-7f0" secondAttribute="trailing" constant="-3" id="ReZ-WJ-OSq"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="qCf-kg-5Zk" secondAttribute="bottom" id="VPa-xL-iKR"/>
@@ -63,7 +63,7 @@
                                         <constraint firstItem="Lhe-Uq-ggg" firstAttribute="centerX" secondItem="aF7-ZN-7f0" secondAttribute="centerX" id="bzD-gx-jPa"/>
                                         <constraint firstItem="Lhe-Uq-ggg" firstAttribute="leading" secondItem="aF7-ZN-7f0" secondAttribute="leading" constant="3" id="d5X-f1-hWI"/>
                                         <constraint firstItem="4hr-gA-Km6" firstAttribute="top" secondItem="11N-fk-c7Q" secondAttribute="topMargin" id="emx-jE-Ehf"/>
-                                        <constraint firstItem="qCf-kg-5Zk" firstAttribute="trailing" secondItem="11N-fk-c7Q" secondAttribute="trailingMargin" id="gR6-wb-tfX"/>
+                                        <constraint firstItem="qCf-kg-5Zk" firstAttribute="trailing" secondItem="11N-fk-c7Q" secondAttribute="trailingMargin" priority="900" id="gR6-wb-tfX"/>
                                         <constraint firstItem="4hr-gA-Km6" firstAttribute="top" secondItem="11N-fk-c7Q" secondAttribute="topMargin" constant="8" id="hmW-lG-Oa6"/>
                                         <constraint firstItem="aF7-ZN-7f0" firstAttribute="leading" secondItem="11N-fk-c7Q" secondAttribute="leadingMargin" id="kZj-IK-b5E"/>
                                         <constraint firstItem="4hr-gA-Km6" firstAttribute="leading" secondItem="aF7-ZN-7f0" secondAttribute="trailing" constant="8" symbolic="YES" id="o5j-Rb-hNx"/>
@@ -79,6 +79,7 @@
                                     <outlet property="tweetProfileImageView" destination="aF7-ZN-7f0" id="rrN-Ix-oV2"/>
                                     <outlet property="tweetScreenNameLabel" destination="4hr-gA-Km6" id="2B8-s5-iAj"/>
                                     <outlet property="tweetTextLabel" destination="qCf-kg-5Zk" id="vsI-Zp-zTC"/>
+                                    <segue destination="eiE-Xg-V9T" kind="show" identifier="Show Mentions" id="DMm-Vx-XW7"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -87,7 +88,7 @@
                             <outlet property="delegate" destination="ESb-8y-so3" id="CdW-v1-JRK"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="X2g-Fc-Qve"/>
+                    <navigationItem key="navigationItem" title="Smashtag" id="X2g-Fc-Qve"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="N54-zq-QCZ">
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
@@ -101,6 +102,73 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8jO-G8-Ew6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1438" y="461"/>
+        </scene>
+        <!--Mentions Table View Controller-->
+        <scene sceneID="GJL-fD-XEe">
+            <objects>
+                <tableViewController id="eiE-Xg-V9T" customClass="MentionsTableViewController" customModule="Smashtag" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="uQP-GR-a7l">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Keyword Cell" textLabel="sSS-Tj-UnV" style="IBUITableViewCellStyleDefault" id="rDI-eP-utv">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rDI-eP-utv" id="gYU-wc-ecA">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sSS-Tj-UnV">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Image Cell" rowHeight="280" id="KuL-PP-L7O" customClass="MentionsTableViewCell" customModule="Smashtag" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KuL-PP-L7O" id="zbO-kf-Lig">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UTL-I7-JBj">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="279"/>
+                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </imageView>
+                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="lWd-E7-raG">
+                                            <rect key="frame" x="282" y="121" width="37" height="37"/>
+                                        </activityIndicatorView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="lWd-E7-raG" firstAttribute="centerY" secondItem="UTL-I7-JBj" secondAttribute="centerY" id="8dV-ij-eoc"/>
+                                        <constraint firstAttribute="bottom" secondItem="UTL-I7-JBj" secondAttribute="bottom" id="JAE-Jj-w0d"/>
+                                        <constraint firstAttribute="trailing" secondItem="UTL-I7-JBj" secondAttribute="trailing" id="L68-HJ-Zwf"/>
+                                        <constraint firstItem="lWd-E7-raG" firstAttribute="centerX" secondItem="UTL-I7-JBj" secondAttribute="centerX" id="Mcf-XP-lh6"/>
+                                        <constraint firstItem="UTL-I7-JBj" firstAttribute="top" secondItem="zbO-kf-Lig" secondAttribute="top" id="fVK-ek-jGI"/>
+                                        <constraint firstItem="lWd-E7-raG" firstAttribute="top" secondItem="zbO-kf-Lig" secondAttribute="top" constant="130" id="lh3-YX-LV7"/>
+                                        <constraint firstItem="UTL-I7-JBj" firstAttribute="leading" secondItem="zbO-kf-Lig" secondAttribute="leading" id="qHL-gi-PtU"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="lh3-YX-LV7"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="spinner" destination="lWd-E7-raG" id="WG7-zP-AA9"/>
+                                    <outlet property="tweetImage" destination="UTL-I7-JBj" id="WYK-eF-8LL"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="eiE-Xg-V9T" id="fe9-bP-dXZ"/>
+                            <outlet property="delegate" destination="eiE-Xg-V9T" id="efT-Rr-mAc"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CGA-F2-09q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2234" y="463"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nNY-vz-bMh">
