@@ -69,6 +69,7 @@ class MentionsTableViewController: UITableViewController {
         static let KeywordCellReuseIdentifier = "Keyword Cell"
         static let ImageCellReuseIdentifier = "Image Cell"
         static let KeywordSegueIdentifier = "From Keyword"
+        static let ImageSegueIdentifier = "Show Image"
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -93,7 +94,7 @@ class MentionsTableViewController: UITableViewController {
         case .Image(let url, let ratio):
             let cell = tableView.dequeueReusableCellWithIdentifier(
                 Storyboard.ImageCellReuseIdentifier,
-                forIndexPath: indexPath) as MentionsTableViewCell
+                forIndexPath: indexPath) as ImageTableViewCell
             cell.imageUrl = url
             return cell
         }
@@ -135,6 +136,13 @@ class MentionsTableViewController: UITableViewController {
                 if let ttvc = segue.destinationViewController as? TweetTableViewController {
                     if let cell = sender as? UITableViewCell {
                         ttvc.searchText = cell.textLabel?.text
+                    }
+                }
+            } else if identifier == Storyboard.ImageSegueIdentifier {
+                if let ivc = segue.destinationViewController as? ImageViewController {
+                    if let cell = sender as? ImageTableViewCell {
+                        ivc.imageURL = cell.imageUrl
+                        ivc.title = title
                     }
                 }
             }

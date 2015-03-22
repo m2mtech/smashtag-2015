@@ -1,5 +1,5 @@
 //
-//  MentionsTableViewCell.swift
+//  ImageTableViewCell.swift
 //  Smashtag
 //
 //  Created by Martin Mandl on 09.03.15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MentionsTableViewCell: UITableViewCell {
+class ImageTableViewCell: UITableViewCell {
 
     @IBOutlet weak var tweetImage: UIImageView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
