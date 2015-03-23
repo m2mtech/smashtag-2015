@@ -75,7 +75,7 @@ class ImageViewController: UIViewController, UIScrollViewDelegate
             autoScale()
         }
     }
-    
+
     private var scrollViewDidScrollOrZoom = false
     
     private func autoScale() {
