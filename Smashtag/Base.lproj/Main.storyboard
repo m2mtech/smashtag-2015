@@ -183,6 +183,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="lAJ-MB-nGQ" kind="show" identifier="Show URL" id="dUO-2d-jxi"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CGA-F2-09q" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="GeP-uQ-DtS" userLabel="Exit" sceneMemberID="exit"/>
@@ -293,6 +296,52 @@
                 <exit id="6u5-8A-G96" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2250" y="1225"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="HHe-Ii-fex">
+            <objects>
+                <viewController id="lAJ-MB-nGQ" customClass="WebViewController" customModule="Smashtag" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZMD-xq-X97"/>
+                        <viewControllerLayoutGuide type="bottom" id="T8g-ba-WxZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="79i-9D-a81">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TmQ-ri-I9Y">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="54O-Tt-bcn">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="54O-Tt-bcn" firstAttribute="centerY" secondItem="TmQ-ri-I9Y" secondAttribute="centerY" id="QMS-6k-Sfy"/>
+                            <constraint firstItem="TmQ-ri-I9Y" firstAttribute="leading" secondItem="79i-9D-a81" secondAttribute="leading" id="bxd-Vp-ZgB"/>
+                            <constraint firstItem="TmQ-ri-I9Y" firstAttribute="bottom" secondItem="T8g-ba-WxZ" secondAttribute="top" id="dmX-HO-kdV"/>
+                            <constraint firstAttribute="trailing" secondItem="TmQ-ri-I9Y" secondAttribute="trailing" id="hqD-86-bjg"/>
+                            <constraint firstItem="54O-Tt-bcn" firstAttribute="centerX" secondItem="TmQ-ri-I9Y" secondAttribute="centerX" id="t2y-dJ-zkx"/>
+                            <constraint firstItem="TmQ-ri-I9Y" firstAttribute="top" secondItem="79i-9D-a81" secondAttribute="top" id="zpa-rE-eHJ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="gsh-L9-GQy">
+                        <barButtonItem key="rightBarButtonItem" systemItem="reply" id="RLA-MI-jdP">
+                            <connections>
+                                <action selector="back:" destination="lAJ-MB-nGQ" id="2oq-18-fmR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="spinner" destination="54O-Tt-bcn" id="Tsw-0I-Hc7"/>
+                        <outlet property="webView" destination="TmQ-ri-I9Y" id="Ijz-8q-axd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bGW-OT-ef2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2250" y="1985"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Klo-No-uI0">

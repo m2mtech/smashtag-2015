@@ -71,6 +71,7 @@ class MentionsTableViewController: UITableViewController {
         static let ImageCellReuseIdentifier = "Image Cell"
         static let KeywordSegueIdentifier = "From Keyword"
         static let ImageSegueIdentifier = "Show Image"
+        static let WebSegueIdentifier = "Show URL"
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -122,7 +123,8 @@ class MentionsTableViewController: UITableViewController {
             if let cell = sender as? UITableViewCell {
                 if let url = cell.textLabel?.text {
                     if url.hasPrefix("http") {
-                        UIApplication.sharedApplication().openURL(NSURL(string: url)!)                        
+                        //UIApplication.sharedApplication().openURL(NSURL(string: url)!)
+                        performSegueWithIdentifier(Storyboard.WebSegueIdentifier, sender: sender)
                         return false
                     }
                 }
@@ -144,6 +146,14 @@ class MentionsTableViewController: UITableViewController {
                     if let cell = sender as? ImageTableViewCell {
                         ivc.imageURL = cell.imageUrl
                         ivc.title = title
+                    }
+                }
+            } else if identifier == Storyboard.WebSegueIdentifier {
+                if let wvc = segue.destinationViewController as? WebViewController {
+                    if let cell = sender as? UITableViewCell {
+                        if let url = cell.textLabel?.text {
+                            wvc.url = NSURL(string: url)
+                        }
                     }
                 }
             }
