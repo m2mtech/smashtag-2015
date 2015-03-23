@@ -88,7 +88,13 @@
                             <outlet property="delegate" destination="ESb-8y-so3" id="CdW-v1-JRK"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Smashtag" id="X2g-Fc-Qve"/>
+                    <navigationItem key="navigationItem" title="Smashtag" id="X2g-Fc-Qve">
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="daT-jJ-zIq">
+                            <connections>
+                                <segue destination="s01-38-pE8" kind="unwind" unwindAction="unwindToRoot:" id="Lpq-t5-Cfj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="N54-zq-QCZ">
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
@@ -100,6 +106,7 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8jO-G8-Ew6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="s01-38-pE8" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2250" y="461"/>
         </scene>
@@ -169,8 +176,16 @@
                             <outlet property="delegate" destination="eiE-Xg-V9T" id="efT-Rr-mAc"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="tuZ-zk-Gm7">
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="MRT-Qi-IXx">
+                            <connections>
+                                <segue destination="GeP-uQ-DtS" kind="unwind" unwindAction="unwindToRoot:" id="Nqa-Xs-fNb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CGA-F2-09q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="GeP-uQ-DtS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1438" y="1225"/>
         </scene>
@@ -244,7 +259,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Xz-hb-bTz">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                             </scrollView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="DQl-RO-3f3">
                                 <rect key="frame" x="290" y="290" width="20" height="20"/>
@@ -260,12 +275,22 @@
                             <constraint firstItem="2Xz-hb-bTz" firstAttribute="top" secondItem="Q4Z-Wc-QnU" secondAttribute="top" id="ljX-OX-svJ"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="HNo-8M-v8N">
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="hVv-GK-M1x">
+                            <connections>
+                                <segue destination="6u5-8A-G96" kind="unwind" unwindAction="unwindToRoot:" id="bOI-U2-aUf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="scrollView" destination="2Xz-hb-bTz" id="SCu-iQ-bKp"/>
                         <outlet property="spinner" destination="DQl-RO-3f3" id="iOl-df-fzr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="syM-Wo-4oJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="6u5-8A-G96" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2250" y="1225"/>
         </scene>
@@ -309,6 +334,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="sXW-qy-k6h"/>
+        <segue reference="7e5-2j-0bN"/>
     </inferredMetricsTieBreakers>
 </document>

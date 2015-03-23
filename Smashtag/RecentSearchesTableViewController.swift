@@ -49,5 +49,7 @@ class RecentSearchesTableViewController: UITableViewController {
             }
         }
     }
-
+    
+    @IBAction func unwindToRoot(sender: UIStoryboardSegue) { }
+    
 }
