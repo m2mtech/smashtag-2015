@@ -48,9 +48,17 @@ class TweetTableViewCell: UITableViewCell
             
             tweetScreenNameLabel?.text = "\(tweet.user)"
             
+            self.tweetProfileImageView?.image = nil
             if let profileImageURL = tweet.user.profileImageURL {
-                if let imageData = NSData(contentsOfURL: profileImageURL) {
-                    tweetProfileImageView?.image = UIImage(data: imageData)
+                dispatch_async(dispatch_get_global_queue(NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_7_1 ? Int(QOS_CLASS_USER_INITIATED.value) : DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
+                    let imageData = NSData(contentsOfURL: profileImageURL)
+                    dispatch_async(dispatch_get_main_queue()) {
+                        if profileImageURL == tweet.user.profileImageURL {
+                            if imageData != nil {
+                                self.tweetProfileImageView?.image = UIImage(data: imageData!)
+                            }
+                        }
+                    }
                 }
             }
             
