@@ -33,4 +33,11 @@ class RecentSearches {
         }
         values = currentSearches
     }
+    
+    func removeAtIndex(index: Int) {
+        var currentSearches = values
+        currentSearches.removeAtIndex(index)
+        values = currentSearches
+    }
+
 }

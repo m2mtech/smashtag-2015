@@ -35,7 +35,14 @@ class RecentSearchesTableViewController: UITableViewController {
 
         return cell
     }
-
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            RecentSearches().removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        }
+    }
+    
     // MARK: - Navitation
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
