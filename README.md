@@ -5,6 +5,7 @@ written in Xcode 6.2 for iOS8.2+
 
 ### various versions are available via branches and tags:
 
++ [Project #4 Assignment #4 Extra Task #6](http://cs193p.m2m.at/cs193p-project-4-assignment-4-extra-task-6-winter-2015/) -> [project4assignment4extratask6](https://github.com/m2mtech/smashtag-2015/tree/project4assignment4extratask6)
 + [Project #4 Assignment #4 Extra Task #5](http://cs193p.m2m.at/cs193p-project-4-assignment-4-extra-task-5-winter-2015/) -> [project4assignment4extratask5](https://github.com/m2mtech/smashtag-2015/tree/project4assignment4extratask5)
 + [Project #4 Assignment #4 Extra Task #4](http://cs193p.m2m.at/cs193p-project-4-assignment-4-extra-task-4-winter-2015/) -> [project4assignment4extratask4](https://github.com/m2mtech/smashtag-2015/tree/project4assignment4extratask4)
 + [Project #4 Assignment #4 Extra Task #3](http://cs193p.m2m.at/cs193p-project-4-assignment-4-extra-task-3-winter-2015/) -> [project4assignment4extratask3](https://github.com/m2mtech/smashtag-2015/tree/project4assignment4extratask3)

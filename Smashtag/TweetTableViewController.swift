@@ -61,8 +61,20 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
                 navigationItem.rightBarButtonItem = nil
             }
         }
+ 
+        let imageButton = UIBarButtonItem(barButtonSystemItem: .Camera, target: self, action: "showImages:")
+        if let existingButton = navigationItem.rightBarButtonItem {
+            navigationItem.rightBarButtonItems = [existingButton, imageButton]
+        } else {
+            navigationItem.rightBarButtonItem = imageButton
+        }        
 
-        refresh()
+        if tweets.count == 0 {
+            refresh()
+        } else {
+            searchTextField.text = "@" + tweets.first!.first!.user.screenName
+            tableView.reloadSections(NSIndexSet(indexesInRange: NSMakeRange(0, tableView.numberOfSections())), withRowAnimation: .None)
+        }
     }
 
     func refresh() {
@@ -116,6 +128,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     private struct Storyboard {
         static let CellReuseIdentifier = "Tweet"
         static let MentionsIdentifier = "Show Mentions"
+        static let ImagesIdentifier = "Show Images"
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -147,11 +160,20 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
                         mtvc.tweet = tweetCell.tweet
                     }
                 }
+            } else if identifier == Storyboard.ImagesIdentifier {
+                if let icvc = segue.destinationViewController as? ImageCollectionViewController {
+                    icvc.tweets = tweets
+                    icvc.title = "Images: \(searchText!)"
+                }
             }
         }
     }
     
     @IBAction func unwindToRoot(sender: UIStoryboardSegue) { }
+    
+    func showImages(sender: UIBarButtonItem) {
+        performSegueWithIdentifier(Storyboard.ImagesIdentifier, sender: sender)
+    }
     
     override func canPerformUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject) -> Bool {
         if let first = navigationController?.viewControllers.first as? TweetTableViewController {
