@@ -88,6 +88,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
         if searchText != nil {
             RecentSearches().add(searchText!)
             if let request = nextRequestToAttempt {
+                self.lastSuccessfulRequest = request // oops, forgot this line in lecture
                 request.fetchTweets { (newTweets) -> Void in
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         if newTweets.count > 0 {
@@ -97,6 +98,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
                             sender?.endRefreshing()
                             self.title = self.searchText
                         }
+                        sender?.endRefreshing()
                     })
                 }
             }
