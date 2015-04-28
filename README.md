@@ -1,6 +1,6 @@
 # Smashtag of the cs193p lecture (Winter 2015)
 
-written in Xcode 6.2 for iOS8.2+
+written in Xcode 6.3.1 for iOS8.3+
 
 
 ### various versions are available via branches and tags:
