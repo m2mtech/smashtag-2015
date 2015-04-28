@@ -16,27 +16,27 @@ import Foundation
 
 public class Tweet : Printable
 {
-    public let text: String
-    public let user: User
-    public let created: NSDate
-    public let id: String?
-    public let media = [MediaItem]()
-    public let mediaMentions = [IndexedKeyword]()
-    public let hashtags = [IndexedKeyword]()
-    public let urls = [IndexedKeyword]()
-    public let userMentions = [IndexedKeyword]()
+    public var text: String
+    public var user: User
+    public var created: NSDate
+    public var id: String?
+    public var media = [MediaItem]()
+    public var mediaMentions = [IndexedKeyword]()
+    public var hashtags = [IndexedKeyword]()
+    public var urls = [IndexedKeyword]()
+    public var userMentions = [IndexedKeyword]()
 
     public struct IndexedKeyword: Printable
     {
-        public let keyword: String              // will include # or @ or http:// prefix
-        public let range: Range<String.Index>   // index into the Tweet's text property only
-        public let nsrange: NSRange             // index into an NS[Attributed]String made from the Tweet's text
+        public var keyword: String              // will include # or @ or http:// prefix
+        public var range: Range<String.Index>   // index into the Tweet's text property only
+        public var nsrange = NSMakeRange(0, 0)              // index into an NS[Attributed]String made from the Tweet's text
 
         public init?(data: NSDictionary?, inText: String, prefix: String?) {
             let indices = data?.valueForKeyPath(TwitterKey.Entities.Indices) as? NSArray
             if let startIndex = (indices?.firstObject as? NSNumber)?.integerValue {
                 if let endIndex = (indices?.lastObject as? NSNumber)?.integerValue {
-                    let length = countElements(inText)
+                    let length = count(inText)
                     if length > 0 {
                         let start = max(min(startIndex, length-1), 0)
                         let end = max(min(endIndex, length), 0)
@@ -136,7 +136,7 @@ private extension NSString {
         var end = max(min(nearRange.location + nearRange.length, length), 0)
         var done = false
         while !done {
-            let range = rangeOfString(substring, options: NSStringCompareOptions.allZeros, range: NSMakeRange(start, end-start))
+            let range = rangeOfString(substring as String, options: NSStringCompareOptions.allZeros, range: NSMakeRange(start, end-start))
             if range.location != NSNotFound {
                 return range
             }

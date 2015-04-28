@@ -90,13 +90,13 @@ class MentionsTableViewController: UITableViewController {
         case .Keyword(let keyword):
             let cell = tableView.dequeueReusableCellWithIdentifier(
                 Storyboard.KeywordCellReuseIdentifier,
-                forIndexPath: indexPath) as UITableViewCell
+                forIndexPath: indexPath) as! UITableViewCell
             cell.textLabel?.text = keyword
             return cell
         case .Image(let url, let ratio):
             let cell = tableView.dequeueReusableCellWithIdentifier(
                 Storyboard.ImageCellReuseIdentifier,
-                forIndexPath: indexPath) as ImageTableViewCell
+                forIndexPath: indexPath) as! ImageTableViewCell
             cell.imageUrl = url
             return cell
         }

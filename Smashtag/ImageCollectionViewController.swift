@@ -12,10 +12,10 @@ class ImageCollectionViewController: UICollectionViewController, UICollectionVie
 
     var tweets: [[Tweet]] = [] {
         didSet {
-            images = tweets.reduce([], +)
+            images = tweets.reduce([], combine: +)
                 .map { tweet in
                     tweet.media.map { TweetMedia(tweet: tweet, media: $0) }
-                }.reduce([], +)
+                }.reduce([], combine: +)
         }
     }
     
@@ -70,7 +70,7 @@ class ImageCollectionViewController: UICollectionViewController, UICollectionVie
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.CellReuseIdentifier, forIndexPath: indexPath) as ImageCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.CellReuseIdentifier, forIndexPath: indexPath) as! ImageCollectionViewCell
     
         cell.cache = cache
         cell.imageURL = images[indexPath.row].media.url

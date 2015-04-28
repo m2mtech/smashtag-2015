@@ -13,8 +13,8 @@ import Foundation
 
 public struct MediaItem
 {
-    public let url: NSURL!
-    public let aspectRatio: Double = 0
+    public var url: NSURL!
+    public var aspectRatio: Double = 0
     
     public var description: String { return (url.absoluteString ?? "no url") + " (aspect ratio = \(aspectRatio))" }
     
@@ -23,7 +23,7 @@ public struct MediaItem
     init?(data: NSDictionary?) {
         var valid = false
         if let urlString = data?.valueForKeyPath(TwitterKey.MediaURL) as? NSString {
-            if let url = NSURL(string: urlString) {
+            if let url = NSURL(string: urlString as String) {
                 self.url = url
                 let h = data?.valueForKeyPath(TwitterKey.Height) as? NSNumber
                 let w = data?.valueForKeyPath(TwitterKey.Width) as? NSNumber

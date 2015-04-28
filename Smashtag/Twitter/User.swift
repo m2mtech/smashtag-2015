@@ -12,11 +12,11 @@ import Foundation
 
 public struct User: Printable
 {
-    public let screenName: String
-    public let name: String
-    public let profileImageURL: NSURL?
-    public let verified: Bool = false
-    public let id: String!
+    public var screenName: String
+    public var name: String
+    public var profileImageURL: NSURL?
+    public var verified: Bool = false
+    public var id: String!
     
     public var description: String { var v = verified ? " ✅" : ""; return "@\(screenName) (\(name))\(v)" }
 

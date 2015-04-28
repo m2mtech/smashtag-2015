@@ -24,8 +24,8 @@ private var twitterAccount: ACAccount?
 
 public class TwitterRequest
 {
-    public let requestType: String
-    public let parameters = Dictionary<String, String>()
+    public var requestType: String
+    public var parameters = Dictionary<String, String>()
     
     // designated initializer
     public init(_ requestType: String, _ parameters: Dictionary<String, String> = [:]) {
@@ -90,7 +90,7 @@ public class TwitterRequest
     //   with the JSON results converted to a Property List
     
     public func fetch(handler: (results: PropertyList?) -> Void) {
-        performTwitterRequest(SLRequestMethod.GET, handler)
+        performTwitterRequest(SLRequestMethod.GET, handler: handler)
     }
     
     // generates a request for older Tweets than were returned by self
@@ -123,7 +123,7 @@ public class TwitterRequest
             URL: NSURL(string: "\(TwitterURLPrefix)\(self.requestType)\(jsonExtension)"),
             parameters: self.parameters
         )
-        performTwitterRequest(request, handler)
+        performTwitterRequest(request, handler: handler)
     }
     
     // sends the request to Twitter
